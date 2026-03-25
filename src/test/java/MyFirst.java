@@ -37,7 +37,7 @@ public class MyFirst {
 
     public void clickDropdown() {
 //        Hovering
-        WebElement hoverElement = driver.findElement(By.className("HeaderNavigationBarItem__title"));
+        WebElement hoverElement = driver.findElement(By.xpath("//div[contains(@class, 'HeaderNavigationBarItem__title') and normalize-space(text())='Café']"));
         Actions actions = new Actions(driver);
         actions.moveToElement(hoverElement).perform();
 
