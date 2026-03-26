@@ -20,8 +20,9 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    // TODO: put a reliable locator for login page (title, form, etc.)
-    @FindBy(xpath = "XPATH_FOR_LOGIN_UNIQUE_ELEMENT")
+    // button locator for login page
+    @FindBy(xpath = "//button[@class='button__content' and normalize-space(.)='S'identifier']")
+
     private WebElement loginUniqueElement;
 
     public boolean isDisplayed() {

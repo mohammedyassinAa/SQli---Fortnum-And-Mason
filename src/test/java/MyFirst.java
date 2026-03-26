@@ -29,12 +29,6 @@ public class MyFirst {
         clickDropdown();
         clickJeCommand();
     }
-
-    public void acceptCookies() {
-        WebElement cookiesButton = driver.findElement(By.id("onetrust-accept-btn-handler"));
-        cookiesButton.click();
-    }
-
     public void clickDropdown() {
 //        Hovering
         WebElement hoverElement = driver.findElement(By.xpath("//div[contains(@class, 'HeaderNavigationBarItem__title') and normalize-space(text())='Café']"));
@@ -42,6 +36,12 @@ public class MyFirst {
         actions.moveToElement(hoverElement).perform();
 
     }
+    public void acceptCookies() {
+        WebElement cookiesButton = driver.findElement(By.id("onetrust-accept-btn-handler"));
+        cookiesButton.click();
+    }
+
+
     public void clickJeCommand(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 

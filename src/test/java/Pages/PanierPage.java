@@ -20,7 +20,7 @@ public class PanierPage {
         PageFactory.initElements(driver, this);
     }
 
-    // TODO: locator for "Valider" button
+    // locator for "Valider" button
     @FindBy(xpath = "//button[@id='ta-mini-basket__checkout' and normalize-space(.)='Valider votre panier']")
     private WebElement validerButton;
 
