@@ -23,47 +23,45 @@ public class ProductsPage {
         PageFactory.initElements(driver, this);
     }
 
-//
-//    @FindBy(xpath = "//h3[contains(@class,'ProductCard__footer__name') " +
-//            "and contains(@class,'plp-caps-title') " +
-//            "and normalize-space(.)='Paris Espresso']")
 
-    @FindBy(xpath = "@FindBy(xpath = \"//h3[contains(normalize-space(.), 'Paris Espresso')]\")\n")
-    private WebElement parisEspressoTitle;
+//id apres name aprescsssselector apres xpath
+//    . means the value of the node element which is h3
+    @FindBy(id = "onetrust-accept-btn-handler")
+    private WebElement coockieElement;
+
+    @FindBy(className ="level-top")
+    private WebElement cqfeElement;
+
+    @FindBy(css = "li[data-product-item-id='1335']")
+    private WebElement parisEspressoItem;
 
 
-    @FindBy(xpath = "AddToBagButtonSmall__quantity")
+    @FindBy(css = "li[data-product-item-id='1335'] button.action.tocart.primary.list")
     private WebElement parisEspressoAddButton;
 
-    @FindBy(id = "ta-quantity-selector__custom-field")
+    @FindBy(css = "li[data-product-item-id='1335'] input.qty-selector-input[name='qty']")
     private WebElement parisEspressoQuantityInput;
 
-    public void clickDropdown() {
-//        Hovering
-        WebElement clickElement = driver.findElement(By.xpath("//div[contains(@class, 'HeaderNavigationBarItem__title') and normalize-space(text())='Café']"));
-        clickElement.click();
 
-
-    }
     public void acceptCookies() {
-        WebElement cookiesButton = driver.findElement(By.id("onetrust-accept-btn-handler"));
-        cookiesButton.click();
+        coockieElement.click();
+    }
+    public void clickDropdown() {
+        wait.until(ExpectedConditions.elementToBeClickable(cqfeElement)).click();
     }
     public void addParisEspressoWithQuantity(int quantity) {
-//        wait for the element
-        wait.until(ExpectedConditions.visibilityOf(parisEspressoTitle));
-        // Scroll to product
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", parisEspressoTitle);
+//       wait for the element
+     wait.until(ExpectedConditions.visibilityOf(parisEspressoItem));
+     // Scroll to product
+    ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].scrollIntoView({block:'center'});", parisEspressoItem);
 
         // Wait and set quantity
-        wait.until(ExpectedConditions.visibilityOf(parisEspressoTitle));
+        wait.until(ExpectedConditions.visibilityOf(parisEspressoItem));
+        wait.until(ExpectedConditions.elementToBeClickable(parisEspressoAddButton));
+        parisEspressoAddButton.click();
         wait.until(ExpectedConditions.elementToBeClickable(parisEspressoQuantityInput));
         parisEspressoQuantityInput.clear();
         parisEspressoQuantityInput.sendKeys(String.valueOf(quantity));
-
-        // Click add to cart
-        wait.until(ExpectedConditions.elementToBeClickable(parisEspressoAddButton));
-        parisEspressoAddButton.click();
     }
 }
