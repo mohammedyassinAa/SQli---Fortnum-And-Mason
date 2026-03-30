@@ -1,24 +1,19 @@
-package Pages;
-
-import Pages.HeaderPage;
+package Tests;
 import Pages.LoginPage;
 import Pages.PanierPage;
 import Pages.ProductsPage;
-import org.junit.Assert;
 import org.testng.annotations.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import java.util.Collections;
 
-public class Step {
+public class addParisEspresso {
 
     WebDriver driver;
 
@@ -47,13 +42,17 @@ public class Step {
     public void addParisEspressoAndValidateShowsLogin() {
 
         ProductsPage productsPage = new ProductsPage(driver);
+        PanierPage panierPage = new PanierPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
-        // Accept Cookies
-        productsPage.acceptCookies();
+        loginPage.acceptCookies();
         productsPage.clickDropdown();
-
-        // Add Paris Espresso with quantity 80
         productsPage.addParisEspressoWithQuantity(80);
+//      Panier
+        panierPage.GotoCart();
+        panierPage.clickProceedToCheckout();
+//     Login
+        loginPage.checkCreateAccountButton();
     }
 
     @AfterTest
