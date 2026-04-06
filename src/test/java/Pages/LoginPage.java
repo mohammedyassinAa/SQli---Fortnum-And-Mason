@@ -39,6 +39,9 @@ public class LoginPage {
     @FindBy(id = "send2")
     private WebElement login_button;
 
+    @FindBy(className = "base")
+    private WebElement accountHeader;
+
     public void acceptCookies() {
         wait.until(ExpectedConditions.visibilityOf(coockieElement)).click();
     }
@@ -49,20 +52,16 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOf(login_icon));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", login_icon);
     }
-//    public void clickLoginButton() {
-//        wait.until(ExpectedConditions.elementToBeClickable(login_icon));
-//        wait.until(ExpectedConditions.elementToBeClickable(login_icon));
-//        login_button.click();
-//    }
     public void enterUsername(String username) {
         emailField.sendKeys(username);
     }
-
     public void enterPassword(String password) {
         passwordField.sendKeys(password);
     }
-
     public void validateLogin() {
         login_button.click();
+    }
+    public void checkAccountHeader() {
+        wait.until(ExpectedConditions.visibilityOf(accountHeader));
     }
 }
