@@ -11,54 +11,54 @@ public class LoginStepDefinition {
     WebDriver driver;
     LoginPage loginPage;
 
-    @Given("user is on homepage")
-    public void userIsOnHomepage() {
-        System.out.println("Opening Home page...");
-        loginPage = new LoginPage(Hooks.driver);
-        loginPage.acceptCookies();
-    }
+//    @Given("user is on homepage")
+//    public void userIsOnHomepage() {
+//        System.out.println("Opening Home page...");
+//        loginPage = new LoginPage(Hooks.driver);
+//        loginPage.acceptCookies();
+//    }
 
 
-    @And("user navigates to Login Page")
-    public void userNavigatesToLoginPage() {
-        System.out.println("Opening login page...");
-        loginPage.clickLoginButton();
-    }
-
-    @When("user fill username {string} and password {string}")
-    public void userFillUsernameUsernameAndPasswordPassword(String username, String password) {
-        System.out.println("Filling username and password...");
-        loginPage.enterUsername(username);
-        loginPage.enterPassword(password);
-        loginPage.validateLogin();
-    }
-
-    @Then("success message is displayed")
-    public void successMessageIsDisplayed() {
-        System.out.println("Successfully logged in");
-        loginPage.checkAccountHeader();
-    }
-
-    @Then("error message is displayed")
-    public void errorMessageIsDisplayed() {
-        System.out.println("Error logged in");
-        loginPage.checkErrorMessage();
-    }
-
-    @Then("email error message is displayed")
-    public void emailErrorMessageIsDisplayed() {
-        System.out.println("Email Error logged in");
-        loginPage.checkEmailErrorMessage();
-    }
-
-    @Then("email required message is displayed")
-    public void emailRequiredMessageIsDisplayed() {
-       System.out.println("Email Required Error logged in");
-       loginPage.checkEmailRequiredMessage();
-    }
-    @Then("password required message is displayed")
-    public void passwordRequiredMessageIsDisplayed() {
-        System.out.println("Password Required Error logged in");
-        loginPage.checkPasswordRequiredMessage();
-    }
+//    @And("user navigates to Login Page")
+//    public void userNavigatesToLoginPage() {
+//        System.out.println("Opening login page...");
+//        loginPage.clickLoginButton();
+//    }
+//
+//    @When("user fill username {string} and password {string}")
+//    public void userFillUsernameUsernameAndPasswordPassword(String username, String password) {
+//        System.out.println("Filling username and password...");
+//        loginPage.enterUsername(username);
+//        loginPage.enterPassword(password);
+//        loginPage.validateLogin();
+//    }
+//
+//    @Then("success message is displayed")
+//    public void successMessageIsDisplayed() {
+//        System.out.println("Successfully logged in");
+//        loginPage.checkAccountHeader();
+//    }
+//
+//    @Then("error message is displayed")
+//    public void errorMessageIsDisplayed() {
+//        System.out.println("Error logged in");
+//        loginPage.checkErrorMessage();
+//    }
+//
+//    @Then("email error message is displayed")
+//    public void emailErrorMessageIsDisplayed() {
+//        System.out.println("Email Error logged in");
+//        loginPage.checkEmailErrorMessage();
+//    }
+//
+//    @Then("email required message is displayed")
+//    public void emailRequiredMessageIsDisplayed() {
+//       System.out.println("Email Required Error logged in");
+//       loginPage.checkEmailRequiredMessage();
+//    }
+//    @Then("password required message is displayed")
+//    public void passwordRequiredMessageIsDisplayed() {
+//        System.out.println("Password Required Error logged in");
+//        loginPage.checkPasswordRequiredMessage();
+//    }
 }

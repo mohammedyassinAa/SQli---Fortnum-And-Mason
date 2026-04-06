@@ -30,7 +30,7 @@ public class Hooks {
 // On lance le driver avec nos nouvelles options furtives
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.get("https://www.nespresso.com/ma/fr");
+        driver.get("https://www.fortnumandmason.com/");
     }
 
     @After
