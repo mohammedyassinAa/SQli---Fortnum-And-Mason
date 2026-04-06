@@ -45,3 +45,13 @@ Feature: Login Feature
     Examples:
       | username           | password  |
       | "yssnmedgmail.com" | "" |
+
+  Scenario Outline: Login with blank email and blank password
+    Given user is on homepage
+    And user navigates to Login Page
+    When user fill username <username> and password <password>
+    Then email required message is displayed
+    And password required message is displayed
+    Examples:
+      | username           | password  |
+      | "" | "" |
