@@ -42,6 +42,16 @@ public class LoginPage {
     @FindBy(className = "base")
     private WebElement accountHeader;
 
+    @FindBy(css = "div[data-ui-id='message-error']")
+    private WebElement errorMessage;
+
+    @FindBy(id = "email-error")
+    private WebElement errorEmailMessage;
+
+    @FindBy(id = "pass-error")
+    private WebElement errorPasswordMessage;
+
+
     public void acceptCookies() {
         wait.until(ExpectedConditions.visibilityOf(coockieElement)).click();
     }
@@ -64,4 +74,17 @@ public class LoginPage {
     public void checkAccountHeader() {
         wait.until(ExpectedConditions.visibilityOf(accountHeader));
     }
+    public void checkErrorMessage() {
+        wait.until(ExpectedConditions.visibilityOf(errorMessage));
+    }
+    public void checkEmailErrorMessage(){
+        wait.until(ExpectedConditions.visibilityOf(errorEmailMessage));
+    }
+    public void checkEmailRequiredMessage(){
+        wait.until(ExpectedConditions.visibilityOf(errorEmailMessage));
+    }
+    public void checkPasswordRequiredMessage(){
+        wait.until(ExpectedConditions.visibilityOf(errorPasswordMessage));
+    }
+
 }

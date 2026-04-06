@@ -39,4 +39,26 @@ public class LoginStepDefinition {
         loginPage.checkAccountHeader();
     }
 
+    @Then("error message is displayed")
+    public void errorMessageIsDisplayed() {
+        System.out.println("Error logged in");
+        loginPage.checkErrorMessage();
+    }
+
+    @Then("email error message is displayed")
+    public void emailErrorMessageIsDisplayed() {
+        System.out.println("Email Error logged in");
+        loginPage.checkEmailErrorMessage();
+    }
+
+    @Then("email required message is displayed")
+    public void emailRequiredMessageIsDisplayed() {
+       System.out.println("Email Required Error logged in");
+       loginPage.checkEmailRequiredMessage();
+    }
+    @Then("password required message is displayed")
+    public void passwordRequiredMessageIsDisplayed() {
+        System.out.println("Password Required Error logged in");
+        loginPage.checkPasswordRequiredMessage();
+    }
 }
