@@ -26,7 +26,7 @@ public class Hooks {
 
 // 3. (Optionnel) Définir un User-Agent de navigateur classique
 
-        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36");
+//        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36");
 // On lance le driver avec nos nouvelles options furtives
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
