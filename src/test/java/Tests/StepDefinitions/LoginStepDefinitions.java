@@ -1,10 +1,11 @@
 package Tests.StepDefinitions;
 
 import Pages.LoginPage;
-import Tests.Hooks;
+import Tests.Tools.Hooks;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
@@ -28,14 +29,26 @@ public class LoginStepDefinitions {
     public void userFillUsernameUsernameAndPasswordPassword(String username, String password) {
         System.out.println("Filling username and password...");
         loginPage.enterUsername(username);
-        System.out.println("Filling username and password...");
         loginPage.clickLoginButton();
-        System.out.println("button clicked ..");
-
         loginPage.enterPassword(password);
-        System.out.println("password filled ..");
-//        System.out.println("password...");
-//        loginPage.validateLogin();
+        loginPage.clickSigninButton();
+    }
 
+    @Then("success message is displayed")
+    public void sucsessMessageShouldAppear() {
+        System.out.println("sucess toast should appear");
+        loginPage.successMessageIsDisplayed();
+    }
+
+    @Then("error message is displayed")
+    public void errorMessageIsDisplayed() {
+        System.out.println("error toast should appear");
+        loginPage.errorMessageIsDisplayed();
+    }
+
+    @Then("email error message is displayed")
+    public void emailErrorMessageIsDisplayed() {
+        System.out.println("email toast should appear");
+        loginPage.emailErrorMessageIsDisplayed();
     }
 }

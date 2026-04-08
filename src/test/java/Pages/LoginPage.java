@@ -1,13 +1,12 @@
 package Pages;
 
 
+import Tests.Tools.Utils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class LoginPage {
@@ -30,7 +29,7 @@ public class LoginPage {
     @FindBy(css = "input[aria-label='Email Address']")
     public WebElement emailField;
 
-    @FindBy(css = "button[aria-label='Login']")
+    @FindBy(xpath = "//button[normalize-space()='Login']")
     public WebElement loginButton;
 
     @FindBy(css = "input[aria-label='Password']")
@@ -38,6 +37,16 @@ public class LoginPage {
 
     @FindBy(css = "button[aria-label='Sign-in']")
     public WebElement signinButton;
+
+    @FindBy(id = "toast-ok-button")
+    public WebElement okButton;
+
+    @FindBy(xpath = "//div[contains(@class,'p-toast-message-error')]//div[text()='You have entered an invalid email or password. Please try again.']")
+    public WebElement errorMessage;
+
+    @FindBy()
+    public WebElement emailErrorMessage;
+
 
     public void acceptCookiesIfPresent() {
         try {
@@ -57,14 +66,6 @@ public class LoginPage {
         }
     }
 
-//    public void removeHoverMenu() {
-//        Actions actions = new Actions(driver);
-//        // Move mouse to (0,0) or to another neutral element out of the way
-//        actions.moveByOffset(0, 0).perform();
-////        // OR move to the body (page) area
-//        actions.moveToElement(driver.findElement(By.tagName("body")), 0, 0).perform();
-//        // Alternatively, move to another element not covered by the menu
-//    }
     public void startShoppingIfPresent() {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(startShoppingButton));
@@ -94,18 +95,18 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOf(loginIcon));
         loginIcon.click();
         wait.until(ExpectedConditions.urlToBe(LOGIN_URL));
-
+        Utils.clearUIState(driver);
+        wait.until(ExpectedConditions.visibilityOf(emailField));
     }
 
     public void enterUsername(String username) {
-        Actions actions = new Actions(driver);
-        actions.moveByOffset(0, 0).perform();
+//        driver.findElement(By.tagName("body")).sendKeys(Keys.ESCAPE);
         wait.until(ExpectedConditions.visibilityOf(emailField));
         emailField.sendKeys(username);
     }
-    public void clickLoginButton() {
 
-        wait.until(ExpectedConditions.visibilityOf(loginButton));
+    public void clickLoginButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         loginButton.click();
     }
 
@@ -114,8 +115,21 @@ public class LoginPage {
         passwordField.sendKeys(password);
     }
 
-//    public void validateLogin() {
-//        wait.until(ExpectedConditions.visibilityOf(signinButton));
-//        signinButton.click();
-//    }
+    public void clickSigninButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(signinButton));
+        signinButton.click();
+    }
+
+    public void successMessageIsDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(okButton));
+    }
+
+    public void errorMessageIsDisplayed(){
+        wait.until(ExpectedConditions.visibilityOf(errorMessage));
+    }
+
+    public void emailErrorMessageIsDisplayed(){
+        wait.until(ExpectedConditions.visibilityOf(emailErrorMessage));
+    }
+
 }
