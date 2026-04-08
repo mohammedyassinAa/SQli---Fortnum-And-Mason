@@ -34,7 +34,6 @@ public class PanierPage {
     @FindBy(id = "top-cart-btn-checkout")
     private WebElement proceedToCheckoutButton;
 
-
     public void GotoCart() {
         wait.until(ExpectedConditions.elementToBeClickable(showCart));
         showCart.click();

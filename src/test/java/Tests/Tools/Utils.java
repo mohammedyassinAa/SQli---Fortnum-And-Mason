@@ -11,21 +11,17 @@ public class Utils {
         try {
             WebElement body = driver.findElement(By.tagName("body"));
 
-            // 1️⃣ Close hover menus / overlays
             body.sendKeys(Keys.ESCAPE);
             body.sendKeys(Keys.ESCAPE);
 
-            // 2️⃣ Click neutral area (safe reset)
             ((JavascriptExecutor) driver).executeScript(
                     "document.body.click();"
             );
 
-            // 3️⃣ Remove focus from active element
             ((JavascriptExecutor) driver).executeScript(
                     "if(document.activeElement) document.activeElement.blur();"
             );
 
-            // 4️⃣ Small controlled wait (instead of Thread.sleep)
             new WebDriverWait(driver, Duration.ofMillis(300))
                     .until(d -> true);
 

@@ -25,11 +25,16 @@ public class LoginStepDefinitions {
         loginPage.navigatesToLoginPage();
     }
 
-    @When("user fill username {string} and password {string}")
-    public void userFillUsernameUsernameAndPasswordPassword(String username, String password) {
-        System.out.println("Filling username and password...");
+    @When("user fill username {string}")
+    public void userFillUsername(String username) {
+        System.out.println("Filling username...");
+//        replace sys
         loginPage.enterUsername(username);
         loginPage.clickLoginButton();
+    }
+    @And("user fill password {string}")
+    public void userFillPassword(String password) {
+        System.out.println("Filling password...");
         loginPage.enterPassword(password);
         loginPage.clickSigninButton();
     }
@@ -48,7 +53,13 @@ public class LoginStepDefinitions {
 
     @Then("email error message is displayed")
     public void emailErrorMessageIsDisplayed() {
-        System.out.println("email toast should appear");
+        System.out.println("email error ");
         loginPage.emailErrorMessageIsDisplayed();
+    }
+
+    @Then("password error message is displayed")
+    public void passwordErrorMessageIsDisplayed() {
+        System.out.println("password error ");
+        loginPage.passwordErrorMessageIsDisplayed();
     }
 }

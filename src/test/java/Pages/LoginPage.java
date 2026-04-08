@@ -44,8 +44,11 @@ public class LoginPage {
     @FindBy(xpath = "//div[contains(@class,'p-toast-message-error')]//div[text()='You have entered an invalid email or password. Please try again.']")
     public WebElement errorMessage;
 
-    @FindBy()
+    @FindBy(className = "invalid-icon")
     public WebElement emailErrorMessage;
+
+    @FindBy(className = "p-error")
+    public WebElement pwdErrorMessage;
 
 
     public void acceptCookiesIfPresent() {
@@ -58,8 +61,7 @@ public class LoginPage {
             WebDriverWait buttonWait = new WebDriverWait(driver, Duration.ofSeconds(10));
             WebElement acceptCookies = buttonWait.until(driver1 -> shadowRoot.findElement(By.cssSelector("[data-testid='uc-accept-all-button']")));
             acceptCookies.click();
-
-            // Wait for the overlay to disappear
+//            wait
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("usercentrics-root")));
         } catch (Exception e) {
             System.out.println("Cookies not present !!");
@@ -100,7 +102,6 @@ public class LoginPage {
     }
 
     public void enterUsername(String username) {
-//        driver.findElement(By.tagName("body")).sendKeys(Keys.ESCAPE);
         wait.until(ExpectedConditions.visibilityOf(emailField));
         emailField.sendKeys(username);
     }
@@ -131,5 +132,7 @@ public class LoginPage {
     public void emailErrorMessageIsDisplayed(){
         wait.until(ExpectedConditions.visibilityOf(emailErrorMessage));
     }
+
+    public void passwordErrorMessageIsDisplayed() {wait.until(ExpectedConditions.visibilityOf(pwdErrorMessage));}
 
 }
