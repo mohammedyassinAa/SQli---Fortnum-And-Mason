@@ -12,6 +12,7 @@ Feature: Login Feature
       | username           | password  |
       | "yssnmed@gmail.com" | "Yassin123_" |
 
+
 #    unhappy path
   Scenario Outline: Login as an Unauthorised user
     Given user is on homepage

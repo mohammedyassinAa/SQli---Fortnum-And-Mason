@@ -10,10 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginPage {
-
     private WebDriver driver;
     private WebDriverWait wait;
     public  String LOGIN_URL = "https://www.fortnumandmason.com/login";
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -100,6 +100,7 @@ public class LoginPage {
         Utils.clearUIState(driver);
         wait.until(ExpectedConditions.visibilityOf(emailField));
     }
+
 
     public void enterUsername(String username) {
         wait.until(ExpectedConditions.visibilityOf(emailField));

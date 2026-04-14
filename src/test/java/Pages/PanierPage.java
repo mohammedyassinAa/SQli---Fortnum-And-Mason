@@ -26,8 +26,7 @@ public class PanierPage {
     @FindBy(css = "div.showcart-wrapper")
     private WebElement showCart;
 
-//    @FindBy(css = "li[data-product-item-id='1335']")
-//    @FindBy(xpath = "//a[normalize-space()='Paris Espresso'] ")
+
     @FindBy(xpath = "//div[contains(@class,'block-minicart')]//a[normalize-space()='Paris Espresso']")
     private WebElement parisEspressoCartItem;
 

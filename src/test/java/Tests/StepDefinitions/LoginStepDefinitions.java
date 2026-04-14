@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginStepDefinitions {
     WebDriver driver;
-    LoginPage loginPage = new LoginPage(Hooks.driver);;
+    LoginPage loginPage = new LoginPage(Hooks.driver);
 
     @Given("user is on homepage")
     public void userIsOnHomepage() {
