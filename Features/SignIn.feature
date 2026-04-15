@@ -2,9 +2,15 @@ Feature: SignIn Feature
   Verify the login Feature
 
 #  Happy path
-  Scenario: Create Successful Account
+  Scenario Outline:  Create Successful Account
     Given user is on homepage
     And user navigates to SignIn Page
+    When user fills in all required fields with valid values <email>, <firstName>, <lastName>, <password>, <repeatPassword>
+#    Then account is created successfully
+
+    Examples:
+      | email                   | firstName                 | lastName            |  password         | repeatPassword   |
+      | "yssnmedtest@gmail.com" | "Mohammed Yassine"    | "Aoulad ahriz"      | "StrongPass123!"  | "StrongPass123!"   |
 
   # Happy Path
 #  Scenario: Successful account creation

@@ -3,10 +3,10 @@ package Tests.StepDefinitions;
 //import Pages.SignInPage;
 import Pages.SignInPage;
 import Tests.Tools.Hooks;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-
-import java.nio.charset.StandardCharsets;
 
 public class SignInStepDefinitions {
     WebDriver driver;
@@ -19,5 +19,27 @@ public class SignInStepDefinitions {
         signInPage.navigatesToSignINPage();
 
     }
+
+
+//    @When("user fills in all required fields with valid values <email>, <firstName>, <lastName>, <password>, <repeatPassword>")
+//    public void userFillsAllFields(String email , String firstname ,String lastname , String confirmPassword, String pwd ) {
+//        signInPage.enterEmail(email);
+//        signInPage.enterFirstName(firstname);
+//        signInPage.enterLastName(lastname);
+//        signInPage.enterPwd(pwd);
+//        signInPage.confirmPassword(confirmPassword);
+//        signInPage.clickCreateAccountButton();
+//    }
+
+    @When("user fills in all required fields with valid values {string}, {string}, {string}, {string}, {string}")
+    public void userFillsInAllRequiredFieldsWithValidValuesEmailFirstNameLastNamePasswordRepeatPassword(String email , String firstname ,String lastname , String confirmPassword, String pwd ) {
+        signInPage.enterEmail(email);
+        signInPage.enterFirstName(firstname);
+        signInPage.enterLastName(lastname);
+        signInPage.enterPwd(pwd);
+        signInPage.confirmPassword(confirmPassword);
+        signInPage.clickCreateAccountButton();
+    }
+
 
 }

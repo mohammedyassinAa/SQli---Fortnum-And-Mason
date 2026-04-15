@@ -28,6 +28,23 @@ public class SignInPage {
     @FindBy(css = "input[aria-label='Email Address']")
     public WebElement emailField;
 
+    @FindBy(css = "input[aria-label='First Name']")
+    public WebElement firstNameField;
+
+    @FindBy(css = "input[aria-label='Last Name']")
+    public WebElement lastNameField;
+
+    @FindBy(css = "input[aria-label='Password']")
+    public WebElement pwdField;
+
+    @FindBy(css = "input[aria-label='Repeat Password']")
+    public WebElement confirmPasswordField;
+
+//    @FindBy(css = "button[aria-label='Create an account']")
+//    public WebElement createAccountButton;
+
+    @FindBy(xpath = "//button[span[text()='Create an account']]")
+    public WebElement createAccountButton;
 
     public void waitForElementToDisappear(By locator) {
         try {
@@ -48,6 +65,36 @@ public class SignInPage {
         wait.until(ExpectedConditions.visibilityOf(emailField));
         wait.until(ExpectedConditions.elementToBeClickable(signInButton));
         signInButton.click();
+        wait.until(ExpectedConditions.visibilityOf(pwdField));
     }
+    public void enterEmail(String email) {
+        wait.until(ExpectedConditions.visibilityOf(emailField));
+        emailField.sendKeys(email);
+    }
+    public void enterFirstName(String firstname) {
+        wait.until(ExpectedConditions.visibilityOf(firstNameField));
+        firstNameField.sendKeys(firstname);
+    }
+
+    public void enterLastName(String lastname) {
+        wait.until(ExpectedConditions.visibilityOf(lastNameField));
+        lastNameField.sendKeys(lastname);
+    }
+    public void enterPwd(String pwd) {
+        wait.until(ExpectedConditions.visibilityOf(pwdField));
+        pwdField.sendKeys(pwd);
+    }
+    public void confirmPassword(String confirmPassword) {
+        wait.until(ExpectedConditions.visibilityOf(confirmPasswordField));
+        confirmPasswordField.sendKeys(confirmPassword);
+    }
+
+
+    public void clickCreateAccountButton() {
+
+        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
+        createAccountButton.click();
+    }
+
 }
 
