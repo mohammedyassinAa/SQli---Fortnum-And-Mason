@@ -6,30 +6,22 @@ Feature: SignIn Feature
     Given user is on homepage
     And user navigates to SignIn Page
     When user fills in all required fields with valid values <email>, <firstName>, <lastName>, <password>, <repeatPassword>
-#    Then account is created successfully
-
+    Then account is created successfully
     Examples:
       | email                   | firstName                 | lastName            |  password         | repeatPassword   |
-      | "yssnmedtest@gmail.com" | "Mohammed Yassine"    | "Aoulad ahriz"      | "StrongPass123!"  | "StrongPass123!"   |
+      | "yssnmedtest1@gmail.com" | "Mohammed Yassine"    | "Aoulad ahriz"      | "StrongPass123!"  | "StrongPass123!"   |
 
-  # Happy Path
-#  Scenario: Successful account creation
-#    Given user is on the Create Account page
-#    When user fills in all required fields with valid values
-#      | Email           | yssnmed+test@gmail.com |
-#      | First Name      | Yassin                 |
-#      | Last Name       | Med                    |
-#      | Password        | StrongPass123!         |
-#      | Repeat Password | StrongPass123!         |
-#    And user submits the form
-#    Then account is created successfully
+
 
 #  # All fields missing (full empty form)
-#  Scenario: All required fields missing
-#    Given user is on the Create Account page
-#    When user leaves all required fields empty
-#    And user submits the form
-#    Then "Field is required." error is shown for each required field
+  Scenario Outline: All required fields missing
+    Given user is on homepage
+    And user navigates to SignIn Page
+    When user fills in all blank fields with valid values <email>, <firstName>, <lastName>, <password>, <repeatPassword>
+    Then error message is displayed
+    Examples:
+      | email | firstName | lastName  |  password  | repeatPassword   |
+      | ""    | ""        | ""        | ""         | ""               |
 
   # All other negative and validation/error paths as parameterized outline
 #  Scenario Outline: Create Account validation and error cases

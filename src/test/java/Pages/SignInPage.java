@@ -40,8 +40,8 @@ public class SignInPage {
     @FindBy(css = "input[aria-label='Repeat Password']")
     public WebElement confirmPasswordField;
 
-//    @FindBy(css = "button[aria-label='Create an account']")
-//    public WebElement createAccountButton;
+    @FindBy(id = "toast-ok-button")
+    public WebElement okButton;
 
     @FindBy(xpath = "//button[span[text()='Create an account']]")
     public WebElement createAccountButton;
@@ -94,6 +94,9 @@ public class SignInPage {
 
         wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
         createAccountButton.click();
+    }
+    public void successMessageIsDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(okButton));
     }
 
 }
