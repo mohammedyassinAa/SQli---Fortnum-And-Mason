@@ -47,4 +47,16 @@ public class SignInStepDefinitions {
         signInPage.clickCreateAccountButton();
     }
 
+
+    @When("user fills in and checks Newsletter and corporate in all blank fields with valid values {string}, {string}, {string}, {string}, {string}")
+    public void userFillsInAndChecksNewsletterAndCorporateInAllBlankFieldsWithValidValuesEmailFirstNameLastNamePasswordRepeatPassword(String email , String firstname ,String lastname , String confirmPassword, String pwd) {
+        signInPage.enterEmail(email);
+        signInPage.enterFirstName(firstname);
+        signInPage.enterLastName(lastname);
+        signInPage.enterPwd(pwd);
+        signInPage.confirmPassword(confirmPassword);
+        signInPage.checkSignInNewsletter();
+        signInPage.checkCorporateAccount();
+        signInPage.clickCreateAccountButton();
+    }
 }

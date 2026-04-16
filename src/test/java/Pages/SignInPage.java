@@ -46,6 +46,17 @@ public class SignInPage {
     @FindBy(xpath = "//button[span[text()='Create an account']]")
     public WebElement createAccountButton;
 
+//    @FindBy(name ="signupForNewsletter")
+//    public WebElement signUp;
+//
+//    @FindBy(name ="corporateAccount")
+//    public WebElement coorporate;
+
+//    @FindBy(css = "input[aria-label='Sign up for our newsletter']")
+//    public WebElement signUp;
+
+
+
     public void waitForElementToDisappear(By locator) {
         try {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
@@ -91,13 +102,22 @@ public class SignInPage {
 
 
     public void clickCreateAccountButton() {
-
         wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
         createAccountButton.click();
     }
+
     public void successMessageIsDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(okButton));
     }
 
+    public void checkSignInNewsletter(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.getElementById('sign-up-newsletter').click();");
+    }
+
+    public void checkCorporateAccount(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.getElementById('corporate-account').click();");
+    }
 }
 
